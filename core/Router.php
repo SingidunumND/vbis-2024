@@ -5,7 +5,8 @@ namespace app\core;
 class Router
 {
     public array $routes = [];
-    // ['get','userCreate','UserController']
+    // ['get','userCreate',['UserController:class','readUser']]
+
     public Request $request;
 
     public function __construct()
