@@ -10,6 +10,6 @@ class UserController
 
     public function readUser() : void
     {
-        echo "User";
+        echo "Nikola";
     }
 }
