@@ -1,0 +1,12 @@
+{
+    "name": "koki/vbis2024",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "ext-mysqli": "*"
+    }
+}
