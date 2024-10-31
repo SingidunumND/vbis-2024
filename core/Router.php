@@ -5,7 +5,6 @@ namespace app\core;
 class Router
 {
     public array $routes = [];
-    // ['get','userCreate','UserController']
     public Request $request;
 
     public function __construct()
@@ -33,5 +32,6 @@ class Router
 
         http_response_code(404);
         echo "NOT FOUND!";
+        exit;
     }
 }
