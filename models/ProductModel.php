@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\core\BaseModel;
-use app\core\DbConnection;
 
 class ProductModel extends BaseModel
 {
