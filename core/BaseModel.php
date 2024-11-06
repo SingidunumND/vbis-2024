@@ -6,17 +6,25 @@ abstract class BaseModel
 {
 
     abstract public function tableName();
+    abstract public function readColumns();
 
-    public function get(){
+    public function one($where)
+    {
 
         $db = new DbConnection();
         $con = $db->connect();
         $tableName = $this->tableName();
+        $columns = $this->readColumns();
 
-        $query = "select * from $tableName limit 1";
+        $query = "select " . implode(',', $columns) . " from $tableName $where limit 1";
 
         $dbResult = $con->query($query);
-        return $dbResult->fetch_assoc();
+
+        $result = $dbResult->fetch_assoc();
+
+        if ($result != null) {
+            $this->mapData($result);
+        }
     }
 
     public function mapData($data){
@@ -28,5 +36,26 @@ abstract class BaseModel
             }
         }
     }
+
+    public function all($where){
+
+        $db = new DbConnection();
+        $con = $db->connect();
+        $tableName = $this->tableName();
+        $columns = $this->readColumns();
+
+        $query = "select " . implode(',', $columns) . " from $tableName $where";
+
+        $dbResult = $con->query($query);
+
+        $resultArray = [];
+
+        while ($result = $dbResult->fetch_assoc()) {
+            $resultArray[] = $result;
+        }
+
+        return $resultArray;
+    }
+
 
 }

@@ -16,5 +16,8 @@ class UserModel extends BaseModel
         return 'users';
     }
 
-
+    public function readColumns() : array
+    {
+        return ["email", "first_name", "last_name"];
+    }
 }

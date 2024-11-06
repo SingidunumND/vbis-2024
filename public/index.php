@@ -11,6 +11,7 @@ $app = new Application();
 
 
 $app->router->get('/getUser', [UserController::class, 'readUser']);
+$app->router->get('/allUsers', [UserController::class, 'readAll']);
 $app->router->get('/', [HomeController::class, 'home']);
 
 $app->run();
