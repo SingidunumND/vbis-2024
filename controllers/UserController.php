@@ -26,4 +26,26 @@ class UserController extends BaseController
         $result = $model->all("");
         $this->view->render('users', 'main', $result);
     }
+
+    public function updateUser()
+    {
+        $model = new UserModel();
+
+        $model->mapData($_GET);
+
+        $model->one("where id=$model->id");
+
+        $this->view->render('updateUser', 'main', $model);
+    }
+
+    public function processUpdateUser()
+    {
+        $model = new UserModel();
+
+        $model->mapData($_POST);
+
+        $model->update("where id=$model->id");
+
+        header("location:" . "/users");
+    }
 }

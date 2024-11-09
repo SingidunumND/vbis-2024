@@ -6,10 +6,11 @@ use app\core\BaseModel;
 
 class ProductModel extends BaseModel
 {
+    public int $id;
+
     public string $name;
 
     public string $description;
-    public string $price;
 
     public function tableName() : string
     {
@@ -18,6 +19,11 @@ class ProductModel extends BaseModel
 
     public function readColumns() : array
     {
-        return ["name", "description", "price"];
+        return ["id", "name", "description"];
+    }
+
+    public function editColumns() : array
+    {
+        return ["name", "description"];
     }
 }
