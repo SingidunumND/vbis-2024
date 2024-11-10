@@ -7,11 +7,6 @@ use app\models\UserModel;
 
 class UserController extends BaseController
 {
-    public function userCreate() : string
-    {
-        return "User Created";
-    }
-
     public function readUser()
     {
         $model = new UserModel();
@@ -45,6 +40,22 @@ class UserController extends BaseController
         $model->mapData($_POST);
 
         $model->update("where id=$model->id");
+
+        header("location:" . "/users");
+    }
+
+    public function createUser()
+    {
+        $this->view->render('createUser', 'main', null);
+    }
+
+    public function processCreateUser()
+    {
+        $model = new UserModel();
+
+        $model->mapData($_POST);
+
+        $model->insert();
 
         header("location:" . "/users");
     }

@@ -9,7 +9,7 @@ use app\models\ProductModel;
     <div class="card-header pb-0">
         <div class="d-flex align-items-center">
             <h6>Products</h6>
-            <a class="btn btn-primary btn-sm ms-auto" href="/createUser">Create</a>
+            <a class="btn btn-primary btn-sm ms-auto" href="/createProduct">Create</a>
         </div>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
@@ -38,7 +38,7 @@ use app\models\ProductModel;
                     echo "</div>";
                     echo " </td>";
                     echo "<td class='align-middle'>";
-                    echo "<a href='/updateProduct?id=$param[id]' target='_blank' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>";
+                    echo "<a href='/updateProduct?id=$param[id]' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>";
                     echo "Edit";
                     echo "</a>";
                     echo " </td>";

@@ -38,7 +38,7 @@ use app\models\UserModel;
                     echo "</div>";
                     echo " </td>";
                     echo "<td class='align-middle'>";
-                    echo "<a href='/updateUser?id=$user[id]' target='_blank' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>";
+                    echo "<a href='/updateUser?id=$user[id]' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>";
                     echo "Edit";
                     echo "</a>";
                     echo " </td>";

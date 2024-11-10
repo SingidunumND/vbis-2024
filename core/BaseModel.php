@@ -2,24 +2,32 @@
 
 namespace app\core;
 
+use mysqli;
+
 abstract class BaseModel
 {
+    private DbConnection $db;
+    private mysqli $con;
+
+    public function __construct()
+    {
+        $this->db = new DbConnection();
+        $this->con = $this->db->connect();
+    }
 
     abstract public function tableName();
     abstract public function readColumns();
+
     abstract public function editColumns();
 
     public function one($where)
     {
-
-        $db = new DbConnection();
-        $con = $db->connect();
         $tableName = $this->tableName();
         $columns = $this->readColumns();
 
         $query = "select " . implode(',', $columns) . " from $tableName $where limit 1";
 
-        $dbResult = $con->query($query);
+        $dbResult = $this->con->query($query);
 
         $result = $dbResult->fetch_assoc();
 
@@ -28,7 +36,8 @@ abstract class BaseModel
         }
     }
 
-    public function mapData($data){
+    public function mapData($data)
+    {
         if ($data !== null){
             foreach ($data as $key => $value) {
                 if (property_exists($this, $key)){
@@ -38,16 +47,14 @@ abstract class BaseModel
         }
     }
 
-    public function all($where){
-
-        $db = new DbConnection();
-        $con = $db->connect();
+    public function all($where)
+    {
         $tableName = $this->tableName();
         $columns = $this->readColumns();
 
         $query = "select " . implode(',', $columns) . " from $tableName $where";
 
-        $dbResult = $con->query($query);
+        $dbResult = $this->con->query($query);
 
         $resultArray = [];
 
@@ -60,10 +67,6 @@ abstract class BaseModel
 
     public function update($where)
     {
-
-        $db = new DbConnection();
-        $con = $db->connect();
-
         $tableName = $this->tableName();
         $columns = $this->editColumns();
         $columnsHelper = array_map(fn($attr) => ":$attr", $columns);
@@ -80,7 +83,21 @@ abstract class BaseModel
             $query = str_replace(":$attribute", is_string($this->{$attribute}) ? '"' . $this->{$attribute} . '"' : $this->{$attribute}, $query);
         }
 
-        $con->query($query);
+        $this->con->query($query);
     }
 
+    public function insert()
+    {
+        $tableName = $this->tableName();
+        $columns = $this->editColumns();
+        $columnsHelper = array_map(fn($attr) => ":$attr", $columns);
+
+        $query = "insert into $tableName (". implode(',',$columns) .") values (". implode(',',$columnsHelper) .")";
+
+        foreach ($columns as $attribute) {
+            $query = str_replace(":$attribute", is_string($this->{$attribute}) ? '"' . $this->{$attribute} . '"' : $this->{$attribute}, $query);
+        }
+
+        $this->con->query($query);
+    }
 }
