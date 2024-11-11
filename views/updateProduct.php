@@ -20,10 +20,10 @@ $form = new Form();
             <p class="text-uppercase text-sm">Product Information</p>
             <div class="row">
                 <div class="col-md-12">
-                    <?php $form->renderInputForm("text", "name", $params);?>
+                    <?php $form->renderInputForm("text", "Name","name", $params);?>
                 </div>
                 <div class="col-md-6">
-                    <?php $form->renderInputForm("text", "description", $params);?>
+                    <?php $form->renderInputForm("text", "Description","description", $params);?>
                 </div>
             </div>
         </div>

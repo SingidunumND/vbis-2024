@@ -19,13 +19,13 @@ $form = new Form();
             <p class="text-uppercase text-sm">User Information</p>
             <div class="row">
                 <div class="col-md-12">
-                    <?php $form->renderInputForm("email", "email", $params);?>
+                    <?php $form->renderInputForm("email","Email address", "email", $params);?>
                 </div>
                 <div class="col-md-6">
-                    <?php $form->renderInputForm("text", "first_name", $params);?>
+                    <?php $form->renderInputForm("text", "First Name","first_name", $params);?>
                 </div>
                 <div class="col-md-6">
-                    <?php $form->renderInputForm("text", "last_name", $params);?>
+                    <?php $form->renderInputForm("text", "Last Name","last_name", $params);?>
                 </div>
             </div>
         </div>
