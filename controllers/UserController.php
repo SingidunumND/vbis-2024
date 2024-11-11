@@ -39,6 +39,14 @@ class UserController extends BaseController
 
         $model->mapData($_POST);
 
+        $model->validate();
+
+        if ($model->errors)
+        {
+            $this->view->render('updateUser', 'main', $model);
+            exit;
+        }
+
         $model->update("where id=$model->id");
 
         header("location:" . "/users");
@@ -46,7 +54,7 @@ class UserController extends BaseController
 
     public function createUser()
     {
-        $this->view->render('createUser', 'main', null);
+        $this->view->render('createUser', 'main', new UserModel());
     }
 
     public function processCreateUser()
@@ -55,8 +63,16 @@ class UserController extends BaseController
 
         $model->mapData($_POST);
 
-        $model->insert();
+        $model->validate();
 
-        header("location:" . "/users");
+        if ($model->errors)
+        {
+            $this->view->render('createUser', 'main', $model);
+            exit;
+        }
+
+            $model->insert();
+
+            header("location:" . "/users");
     }
 }

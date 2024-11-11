@@ -6,6 +6,9 @@ use mysqli;
 
 abstract class BaseModel
 {
+    public const RULE_EMAIL = "rule_email";
+    public const RULE_REQUIRED = "rule_required";
+    public $errors;
     private DbConnection $db;
     private mysqli $con;
 
@@ -17,8 +20,8 @@ abstract class BaseModel
 
     abstract public function tableName();
     abstract public function readColumns();
-
     abstract public function editColumns();
+    abstract public function validationRules();
 
     public function one($where)
     {
@@ -99,5 +102,31 @@ abstract class BaseModel
         }
 
         $this->con->query($query);
+    }
+
+    public function validate()
+    {
+        $allRules = $this->validationRules();
+
+        foreach ($allRules as $attribute => $rules) {
+
+            $value = $this->{$attribute};
+
+            foreach ($rules as $rule) {
+
+                if ($rule == self::RULE_REQUIRED){
+                    if (!$value)
+                    {
+                        $this->errors[$attribute][] = "This field is required.";
+                    }
+                }
+
+                if ($rule == self::RULE_EMAIL){
+                    if (!filter_var($value, FILTER_VALIDATE_EMAIL)){
+                        $this->errors[$attribute][] = "Must be a valid email address.";
+                    }
+                }
+            }
+        }
     }
 }

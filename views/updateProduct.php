@@ -1,8 +1,10 @@
 <?php
+
+use app\core\Form;
 use app\models\ProductModel;
 
 /** @var $params ProductModel */
-
+$form = new Form();
 ?>
 
 <div class="card">
@@ -18,18 +20,10 @@ use app\models\ProductModel;
             <p class="text-uppercase text-sm">Product Information</p>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Name</label>
-                        <input class="form-control" type="text" name="name" value="<?php echo $params->name ?>"
-                               onfocus="focused(this)" onfocusout="defocused(this)">
-                    </div>
+                    <?php $form->renderInputForm("text", "name", $params);?>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Description</label>
-                        <input class="form-control" type="text" name="description" value="<?php echo $params->description ?>"
-                               onfocus="focused(this)" onfocusout="defocused(this)">
-                    </div>
+                    <?php $form->renderInputForm("text", "description", $params);?>
                 </div>
             </div>
         </div>
