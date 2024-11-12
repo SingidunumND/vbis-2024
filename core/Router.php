@@ -16,6 +16,11 @@ class Router
     {
         $this->routes['get'][$path] = $callback;
     }
+
+    public function post(string $path, $callback) : void
+    {
+        $this->routes['post'][$path] = $callback;
+    }
     public function resolve()
     {
         //todo finish method
