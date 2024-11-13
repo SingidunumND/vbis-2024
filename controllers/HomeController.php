@@ -15,4 +15,9 @@ class HomeController extends BaseController
     {
         $this->view->render('getUser', 'main', null);
     }
+
+    public function accessRole() : array
+    {
+        return ["Korisnik", "Administrator"];
+    }
 }

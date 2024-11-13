@@ -10,7 +10,7 @@ abstract class BaseModel
     public const RULE_REQUIRED = "rule_required";
     public $errors;
     private DbConnection $db;
-    private mysqli $con;
+    public mysqli $con;
 
     public function __construct()
     {
