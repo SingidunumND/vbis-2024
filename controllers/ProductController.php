@@ -46,6 +46,6 @@ class ProductController extends BaseController
 
     public function accessRole() : array
     {
-        return ["Administrator"];
+        return ["Korisnik"];
     }
 }

@@ -24,6 +24,7 @@ $app->router->get('/products', [ProductController::class, 'products']);
 $app->router->get('/updateProduct', [ProductController::class, 'update']);
 $app->router->post('/processUpdateProduct', [ProductController::class, 'processUpdate']);
 
+$app->router->get('/accessDenied', [AuthController::class, 'accessDenied']);
 $app->router->get('/registration', [AuthController::class, 'registration']);
 $app->router->post('/processRegistration', [AuthController::class, 'processRegistration']);
 $app->router->get('/login', [AuthController::class, 'login']);

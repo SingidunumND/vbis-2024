@@ -1,3 +1,8 @@
+<?php
+use app\core\Application;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,12 +44,23 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="navbar-nav">
-                            <li class="nav-item me-2">
-                                <a class="nav-link me-2" href="/login">
-                                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                    Sign In
-                                </a>
-                            </li>
+                            <?php
+                            if (Application::$app->session->get('user')) {
+                                echo '<li class="nav-item me-0">';
+                                echo '<a class="nav-link me-2" href="/processLogout">';
+                                echo '<i class="ni ni-user-run opacity-6 text-dark me-1"></i>';
+                                echo 'Logout';
+                                echo '</a>';
+                                echo '</li>';
+                            } else {
+                                echo '<li class="nav-item me-0">';
+                                echo '<a class="nav-link me-2" href="/login">';
+                                echo '<i class="fas fa-key opacity-6 text-dark me-1"></i>';
+                                echo ' Sign In';
+                                echo '</a>';
+                                echo '</li>';
+                            }
+                            ?>
                             <li class="nav-item me-2">
                                 <a class="nav-link me-2" href="/registration">
                                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>

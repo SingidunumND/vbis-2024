@@ -80,9 +80,9 @@ class AuthController extends BaseController
 
             $sessionUserModel=new SessionUserModel();
             $sessionUserModel->email=$model->email;
-            $sessionUserModel->getSessionData();
 
-            Application::$app->session->set("user", $sessionUserModel);
+            Application::$app->session->set("user", $sessionUserModel->getSessionData());
+
             header("location:"."/");
         }
 
@@ -93,6 +93,10 @@ class AuthController extends BaseController
     public function processLogout(){
         Application::$app->session->delete("user");
         header("location:"."/login");
+    }
+
+    public function accessDenied(){
+        $this->view->render('accessDenied', 'auth', null);
     }
 
     public function accessRole() : array
