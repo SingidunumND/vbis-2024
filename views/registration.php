@@ -1,9 +1,9 @@
 <?php
 
 use app\core\Form;
-use app\models\AuthModel;
+use app\models\RegistrationModel;
 
-/** @var $params AuthModel */
+/** @var $params RegistrationModel */
 $form = new Form();
 ?>
 

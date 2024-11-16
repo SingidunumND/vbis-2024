@@ -1,9 +1,10 @@
 <?php
 
 use app\core\Form;
-use app\models\AuthModel;
+use app\core\Application;
+use app\models\LoginModel;
 
-/** @var $params AuthModel */
+/** @var $params LoginModel */
 $form = new Form();
 ?>
 

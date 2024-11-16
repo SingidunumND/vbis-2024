@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\core\BaseModel;
 
-class AuthModel extends BaseModel
+class RegistrationModel extends BaseModel
 {
     public int $id;
     public string $email = '';
@@ -28,7 +28,7 @@ class AuthModel extends BaseModel
     public function validationRules() : array
     {
         return [
-            "email" => [self::RULE_REQUIRED, self::RULE_EMAIL],
+            "email" => [self::RULE_REQUIRED, self::RULE_EMAIL, self::RULE_UNIQUE_EMAIL],
             "password" => [self::RULE_REQUIRED]
         ];
     }
