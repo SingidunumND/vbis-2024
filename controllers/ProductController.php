@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
+use app\core\Application;
 use app\core\BaseController;
 use app\models\ProductModel;
-use app\models\UserModel;
 
 class ProductController extends BaseController
 {
@@ -35,12 +35,21 @@ class ProductController extends BaseController
 
         if ($model->errors)
         {
+            Application::$app->session->set('errorNotification', "Product not updated!");
+
             $this->view->render('updateProduct', 'main', $model);
             exit;
         }
 
         $model->update("where id=$model->id");
 
+        Application::$app->session->set('successNotification', 'Product updated successfully!');
+
         header("location:" . "/products");
+    }
+
+    public function accessRole() : array
+    {
+        return ["Korisnik","Administrator"];
     }
 }

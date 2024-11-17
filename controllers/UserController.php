@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\core\Application;
 use app\core\BaseController;
 use app\models\UserModel;
 
@@ -43,11 +44,13 @@ class UserController extends BaseController
 
         if ($model->errors)
         {
+            Application::$app->session->set('errorNotification', 'User not updated!');
             $this->view->render('updateUser', 'main', $model);
             exit;
         }
 
         $model->update("where id=$model->id");
+        Application::$app->session->set('successNotification', 'User updated!');
 
         header("location:" . "/users");
     }
@@ -67,12 +70,18 @@ class UserController extends BaseController
 
         if ($model->errors)
         {
+            Application::$app->session->set('errorNotification', 'User not created!');
             $this->view->render('createUser', 'main', $model);
             exit;
         }
 
             $model->insert();
-
+            Application::$app->session->set('successNotification', 'User created!');
             header("location:" . "/users");
+    }
+
+    public function accessRole() : array
+    {
+        return ["Administrator"];
     }
 }

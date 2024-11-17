@@ -1,3 +1,7 @@
+<?php
+use app\core\Application;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +22,11 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet"/>
+    <!-- Toastr -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../assets/js/plugins/toastr/toastr.min.css">
+    <script src="../assets/js/plugins/toastr/toastr.min.js"></script>
+    <script src="../assets/js/plugins/toastr/toastr-options.js"></script>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -59,25 +68,17 @@
             <li class="nav-item">
                 <a class="nav-link " href="/products">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
+                        <i class="ni ni-folder-17 text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Products</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/login">
+                <a class="nav-link " href="/processLogout">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
+                        <i class="ni ni-user-run text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Login</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/registration">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Registration</span>
+                    <span class="nav-link-text ms-1">Logout</span>
                 </a>
             </li>
         </ul>
@@ -116,5 +117,11 @@
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/argon-dashboard.min.js?v=2.1.0"></script>
 </body>
+
+<?php
+Application::$app->session->showSuccessNotification();
+
+Application::$app->session->showErrorNotification();
+?>
 
 </html>
