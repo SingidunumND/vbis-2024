@@ -15,7 +15,7 @@ class SessionUserModel extends BaseModel
     public string $role;
 
     public function getSessionData(){
-        $query = "select u.first_name,u.last_name,u.email, r.name as role from user_roles ur 
+        $query = "select u.id as id_user, u.first_name,u.last_name,u.email, r.name as role from user_roles ur 
                   left join users u on u.id = ur.id_user
                   left join roles r on r.id = ur.id_role
                   where u.email = '$this->email'";
@@ -51,6 +51,3 @@ class SessionUserModel extends BaseModel
         return [];
     }
 }
-
-//select u.first_name,u.last_name,r.name from user_roles ur
-//

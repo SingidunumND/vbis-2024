@@ -27,8 +27,7 @@ class Session
     public function showSuccessNotification()
     {
         $message = $this->get("successNotification");
-        if ($message)
-        {
+        if ($message) {
             echo "<script> 
                     toastr.success('$message')
                   </script>";
@@ -40,13 +39,25 @@ class Session
     public function showErrorNotification()
     {
         $message = $this->get("errorNotification");
-        if ($message)
-        {
+        if ($message) {
             echo "<script> 
                     toastr.error('$message')
                   </script>";
 
             $this->delete("errorNotification");
         }
+    }
+
+    public function isInRole($role)
+    {
+        $isInRole = false;
+
+        $sessions = Application::$app->session->get('user');
+
+        foreach ($sessions as $session) {
+            if ($session['role'] == $role)
+                $isInRole = true;
+        }
+        return $isInRole;
     }
 }

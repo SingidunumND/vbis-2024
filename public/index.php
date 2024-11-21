@@ -3,10 +3,12 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\AuthController;
+use app\controllers\ReservationController;
 use app\controllers\ServiceController;
 use app\controllers\UserController;
 use app\controllers\HomeController;
 use app\controllers\ProductController;
+use app\controllers\UserServiceController;
 use app\core\Application;
 
 
@@ -37,5 +39,9 @@ $app->router->get('/updateService', [ServiceController::class, 'update']);
 $app->router->post('/processUpdateService', [ServiceController::class, 'processUpdate']);
 $app->router->get('/createService', [ServiceController::class, 'create']);
 $app->router->post('/processCreateService', [ServiceController::class, 'processCreate']);
+//User Services
+$app->router->get('/serviceForUser', [UserServiceController::class, 'listForUsers']);
+//Reservation
+$app->router->post('/processReservation', [ReservationController::class, 'processReservation']);
 
 $app->run();

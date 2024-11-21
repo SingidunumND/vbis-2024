@@ -74,6 +74,8 @@ class ServiceController extends BaseController
         header("location:" . "/services");
     }
 
+
+
     public function accessRole()
     {
         return ["Administrator"];

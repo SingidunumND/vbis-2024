@@ -51,6 +51,12 @@ use app\core\Application;
                             <?php
                             if (Application::$app->session->get('user')) {
                                 echo '<li class="nav-item me-0">';
+                                echo '<a class="nav-link me-2" href="/">';
+                                echo '<i class="ni ni-tv-2 opacity-6 text-dark me-1"></i>';
+                                echo 'Home';
+                                echo '</a>';
+                                echo '</li>';
+                                echo '<li class="nav-item me-0">';
                                 echo '<a class="nav-link me-2" href="/processLogout">';
                                 echo '<i class="ni ni-user-run opacity-6 text-dark me-1"></i>';
                                 echo 'Logout';
@@ -84,7 +90,7 @@ use app\core\Application;
         <div class="page-header min-vh-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                    <div class="col-xl-6 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                         {{ RENDER_SECTION }}
                     </div>
                     <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
