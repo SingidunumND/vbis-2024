@@ -8,7 +8,7 @@ $form = new Form();
 ?>
 
 <div class="card">
-    <form action="/processCreateService" method="post">
+    <form action="/processCreateService" method="post" enctype="multipart/form-data">
         <div class="card-header pb-0">
             <div class="d-flex align-items-center">
                 <p class="mb-0">Create Service</p>
@@ -26,6 +26,12 @@ $form = new Form();
                 </div>
                 <div class="col-md-6">
                     <?php $form->renderInputForm("text", "Location","location", $params);?>
+                </div>
+                <div class="col-md-6">
+                    <?php $form->renderInputForm("file","Image", "file", $params);?>
+                </div>
+                <div class="col-md-6">
+                    <?php $form->renderInputForm("text","Price", "price", $params);?>
                 </div>
             </div>
         </div>

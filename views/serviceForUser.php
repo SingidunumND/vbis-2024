@@ -15,7 +15,7 @@ use app\models\ServiceModel;
         <input type="hidden" name="id_service" value="'."$param[id]".'">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="'."$param[image_name]".'" class="img-fluid rounded-start" alt="...">
+                <img src="'."../assets/uploads/$param[file]".'" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body p-2">
@@ -25,10 +25,10 @@ use app\models\ServiceModel;
                 <div class="card-footer p-2">
                     <div class="row">
                         <div class="col-md-6 d-flex justify-content-center align-items-center align-content-center center">
-                            <input type="date" class="form-control" name="reservation_time"/>
+                            <input type="text" placeholder="Pick Date" class="form-control mb-3 mb-md-0 datetime-picker-helper" name="reservation_time"/>
                         </div>
                         <div class="col-md-6 d-flex justify-content-center align-items-center">
-                            <button class="btn btn-sm btn-primary mb-0">Reservation</button>
+                            <button class="btn btn-sm btn-primary mb-0">Reservation - '."$param[price]".'$</button>
                         </div>
                     </div>
                 </div>

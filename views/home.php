@@ -16,7 +16,7 @@ use app\models\ServiceModel;
                                 <div class='card mb-3 ms-3 me-3'>
                                     <div class='row g-0'>
                                         <div class='col-md-4'>
-                                            <img src='$param[image_name]' class='img-fluid rounded-start' alt='...'>
+                                            <img src='../assets/uploads/$param[file]' class='img-fluid rounded-start' alt='...'>
                                         </div>
                                         <div class='col-md-8'>
                                             <div class='card-body p-2'>
@@ -29,7 +29,7 @@ use app\models\ServiceModel;
                                                 <span>$param[reservation_time]</span>
                                                  </div>
                                                 <div class='col-md-6 d-flex justify-content-center align-items-center'>
-                                                  <button class='btn btn-sm btn-success mb-0'>Reserved€</button>
+                                                  <button class='btn btn-sm btn-success mb-0'>Reserved - $param[price]$</button>
                                                 </div>
                                                 </div>
                                             </div>
@@ -40,7 +40,7 @@ use app\models\ServiceModel;
                           ";
                 }
             } else {
-                echo "<h3>No reserved services</h3>";
+                echo "<h3>No reserved services!</h3>";
             }
             ?>
         </div>

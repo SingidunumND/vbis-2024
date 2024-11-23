@@ -12,6 +12,7 @@ class ReservationModel extends BaseModel
     public int $id_user;
     public int $id_service;
 
+    public int $price;
     public function tableName()
     {
         return 'reservations';
@@ -19,12 +20,12 @@ class ReservationModel extends BaseModel
 
     public function readColumns()
     {
-        return ['id','reservation_time','id_user','id_service'];
+        return ['id','reservation_time','id_user','id_service','price'];
     }
 
     public function editColumns()
     {
-        return ['reservation_time','id_user','id_service'];
+        return ['reservation_time','id_user','id_service','price'];
     }
 
     public function validationRules()

@@ -13,7 +13,7 @@ class UserReservedModel extends BaseModel
     public string $salon_name='';
     public string $service_name='';
     public string $reservation_time='';
-    public $image_name;
+    public $file;
 
     public function tableName()
     {
@@ -22,7 +22,7 @@ class UserReservedModel extends BaseModel
 
     public function readColumns()
     {
-        return ['id','location','salon_name','service_name','image_name','reservation_time'];
+        return ['id','location','salon_name','service_name','file','reservation_time'];
     }
 
     public function editColumns()

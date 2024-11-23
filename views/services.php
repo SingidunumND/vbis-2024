@@ -33,7 +33,7 @@ use app\models\ServiceModel;
                     echo "</div>";
                     echo "<div class='d-flex flex-column justify-content-center'>";
                     echo "<h6 class='mb-0 text-sm'>$param[service_name] $param[salon_name]</h6>";
-                    echo "<p class='text-xs text-secondary mb-0'>$param[location]</p>";
+                    echo "<p class='text-xs text-secondary mb-0'>$param[location] $param[price]$</p>";
                     echo "</div>";
                     echo "</div>";
                     echo " </td>";

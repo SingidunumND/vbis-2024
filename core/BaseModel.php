@@ -10,6 +10,8 @@ abstract class BaseModel
     public const RULE_REQUIRED = "rule_required";
 
     public const RULE_UNIQUE_EMAIL = "rule_unique_email";
+
+    public const RULE_GREATER_THAN_ZERO = "greater_than_zero";
     public $errors;
     private DbConnection $db;
     public mysqli $con;
@@ -131,6 +133,11 @@ abstract class BaseModel
                 if ($rule == self::RULE_UNIQUE_EMAIL){
                     if ($this->checkUniqueEmail($value)){
                         $this->errors[$attribute][] = "This email already exists.";
+                    }
+                }
+                if ($rule == self::RULE_GREATER_THAN_ZERO){
+                    if ($value<=0){
+                        $this->errors[$attribute][] = "Price must be greater than zero.";
                     }
                 }
             }
