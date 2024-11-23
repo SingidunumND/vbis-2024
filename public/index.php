@@ -8,6 +8,7 @@ use app\controllers\ServiceController;
 use app\controllers\UserController;
 use app\controllers\HomeController;
 use app\controllers\ProductController;
+use app\controllers\UserReportController;
 use app\controllers\UserServiceController;
 use app\core\Application;
 
@@ -43,5 +44,9 @@ $app->router->post('/processCreateService', [ServiceController::class, 'processC
 $app->router->get('/serviceForUser', [UserServiceController::class, 'listForUsers']);
 //Reservation
 $app->router->post('/processReservation', [ReservationController::class, 'processReservation']);
+//Report
+$app->router->get('/myReport', [UserReportController::class, 'myReport']);
+$app->router->get("/getNumberOfReservationsPerMonth",[UserReportController::class, 'getNumberOfReservationsPerMonth']);
+$app->router->get("/getPricePerMonth",[UserReportController::class, 'getPricePerMonth']);
 
 $app->run();

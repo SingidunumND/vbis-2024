@@ -11,7 +11,7 @@ use app\models\ServiceModel;
     foreach ($params as $param) {
         echo '
         <div class="card mb-3 ms-3 me-3">
-        <form action="/processReservation" method="post">
+        <form action="/processReservation" method="post" autocomplete="off">
         <input type="hidden" name="id_service" value="'."$param[id]".'">
         <div class="row g-0">
             <div class="col-md-4">
