@@ -8,7 +8,7 @@ $form = new Form();
 ?>
 
 <div class="card">
-    <form action="/processUpdateService" method="post">
+    <form action="/processUpdateService" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $params->id ?>">
         <div class="card-header pb-0">
             <div class="d-flex align-items-center">
@@ -27,6 +27,12 @@ $form = new Form();
                 </div>
                 <div class="col-md-6">
                     <?php $form->renderInputForm("text", "Location","location", $params);?>
+                </div>
+                <div class="col-md-6">
+                    <?php $form->renderInputForm("file","Image", "file", $params);?>
+                </div>
+                <div class="col-md-6">
+                    <?php $form->renderInputForm("text","Price", "price", $params);?>
                 </div>
             </div>
         </div>

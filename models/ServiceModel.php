@@ -11,7 +11,10 @@ class ServiceModel extends BaseModel
     public string $location='';
     public string $salon_name='';
     public string $service_name='';
-    public $image_name;
+
+    public string $file='';
+
+    public int $price = 0;
 
     public function tableName()
     {
@@ -20,12 +23,12 @@ class ServiceModel extends BaseModel
 
     public function readColumns()
     {
-        return ['id','location','salon_name','service_name','image_name'];
+        return ['id','location','salon_name','service_name','file','price'];
     }
 
     public function editColumns()
     {
-        return ['location','salon_name','service_name'];
+        return ['location','salon_name','service_name','file','price'];
     }
 
     public function validationRules()
@@ -33,7 +36,8 @@ class ServiceModel extends BaseModel
         return [
             'location' => [self::RULE_REQUIRED],
             'salon_name' => [self::RULE_REQUIRED],
-            'service_name' => [self::RULE_REQUIRED]
+            'service_name' => [self::RULE_REQUIRED],
+            'price' => [self::RULE_REQUIRED,self::RULE_GREATER_THAN_ZERO],
         ];
     }
 }

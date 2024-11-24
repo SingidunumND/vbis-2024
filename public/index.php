@@ -2,11 +2,15 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use app\controllers\AdminReportController;
 use app\controllers\AuthController;
+use app\controllers\ReservationController;
 use app\controllers\ServiceController;
 use app\controllers\UserController;
 use app\controllers\HomeController;
 use app\controllers\ProductController;
+use app\controllers\UserReportController;
+use app\controllers\UserServiceController;
 use app\core\Application;
 
 
@@ -37,5 +41,16 @@ $app->router->get('/updateService', [ServiceController::class, 'update']);
 $app->router->post('/processUpdateService', [ServiceController::class, 'processUpdate']);
 $app->router->get('/createService', [ServiceController::class, 'create']);
 $app->router->post('/processCreateService', [ServiceController::class, 'processCreate']);
+//User Services
+$app->router->get('/serviceForUser', [UserServiceController::class, 'listForUsers']);
+//Reservation
+$app->router->post('/processReservation', [ReservationController::class, 'processReservation']);
+//Report
+$app->router->get('/myReport', [UserReportController::class, 'myReport']);
+$app->router->get("/getNumberOfReservationsPerMonth",[UserReportController::class, 'getNumberOfReservationsPerMonth']);
+$app->router->get("/getPricePerMonth",[UserReportController::class, 'getPricePerMonth']);
+//Admin Report
+$app->router->get("/adminReport",[AdminReportController::class, 'adminReport']);
+$app->router->get("/getPricePerUser",[AdminReportController::class, 'getPricePerUser']);
 
 $app->run();
